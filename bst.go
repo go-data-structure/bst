@@ -4,7 +4,7 @@ package bst
 type Node struct {
 	Left  *Node
 	Right *Node
-	Val   interface{}
+	Val   int
 }
 
 // BST is binary search tree.
