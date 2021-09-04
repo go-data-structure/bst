@@ -8,10 +8,10 @@ func Valid(root *Node) bool {
 			return true
 		}
 
-		if min != nil && n.Val <= min.Val {
+		if min != nil && n.ID <= min.ID {
 			return false
 		}
-		if max != nil && n.Val >= max.Val {
+		if max != nil && n.ID >= max.ID {
 			return false
 		}
 
