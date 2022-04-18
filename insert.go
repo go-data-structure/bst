@@ -17,19 +17,19 @@ func Insert[K constraints.Ordered, V any](t *Node[K, V], key K, value V) (*Node[
 		}
 
 		if *cur.Key > key {
-			if cur.Right == nil {
-				node := newBSTNode[K, V](key, value)
-				cur.Right = &node
-				break
-			}
-			cur = cur.Right
-		} else if *cur.Key < key {
 			if cur.Left == nil {
 				node := newBSTNode[K, V](key, value)
 				cur.Left = &node
 				break
 			}
 			cur = cur.Left
+		} else if *cur.Key < key {
+			if cur.Right == nil {
+				node := newBSTNode[K, V](key, value)
+				cur.Right = &node
+				break
+			}
+			cur = cur.Right
 		}
 	}
 
