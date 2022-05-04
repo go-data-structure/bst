@@ -1,6 +1,8 @@
 package bst
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestValid(t *testing.T) {
 	tree := NewBst[int, string]()

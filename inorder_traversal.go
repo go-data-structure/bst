@@ -1,12 +1,11 @@
 package bst
 
 import (
-	"fmt"
 	"golang.org/x/exp/constraints"
 )
 
 // InorderTraversal inorder traversal in asc
-func InorderTraversal[K constraints.Ordered, V any](t *Node[K, V]) {
+func InorderTraversal[K constraints.Ordered, V any](t *Node[K, V], f func(key K, value V)) {
 	if t == nil {
 		return
 	}
@@ -23,8 +22,7 @@ func InorderTraversal[K constraints.Ordered, V any](t *Node[K, V]) {
 		cur = stacks[len(stacks)-1]
 		stacks = stacks[:len(stacks)-1]
 
-		fmt.Println(*cur.Key)
-		fmt.Println(*cur.Val)
+		f(*cur.Key, *cur.Val)
 
 		cur = cur.Right
 
@@ -35,7 +33,7 @@ func InorderTraversal[K constraints.Ordered, V any](t *Node[K, V]) {
 }
 
 // InorderTraversalDesc inorder traversal in desc
-func InorderTraversalDesc[K constraints.Ordered, V any](t *Node[K, V]) {
+func InorderTraversalDesc[K constraints.Ordered, V any](t *Node[K, V], f func(key K, value V)) {
 	if t == nil {
 		return
 	}
@@ -52,8 +50,7 @@ func InorderTraversalDesc[K constraints.Ordered, V any](t *Node[K, V]) {
 		cur = stacks[len(stacks)-1]
 		stacks = stacks[:len(stacks)-1]
 
-		fmt.Println(*cur.Key)
-		fmt.Println(*cur.Val)
+		f(*cur.Key, *cur.Val)
 
 		cur = cur.Left
 
