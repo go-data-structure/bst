@@ -11,11 +11,11 @@ func TestInorderTraversal(t *testing.T) {
 		fmt.Println(k, ":", v)
 	})
 
-	tree, _ = Insert[int, string](tree, 3, "xxxx")
-	tree, _ = Insert[int, string](tree, 1, "xxxx")
-	tree, _ = Insert[int, string](tree, 8, "xxxx")
-	tree, _ = Insert[int, string](tree, 5, "xxxx")
-	tree, _ = Insert[int, string](tree, 6, "xxxx")
+	tree.Insert(3, "xxxx")
+	tree.Insert(1, "xxxx")
+	tree.Insert(8, "xxxx")
+	tree.Insert(5, "xxxx")
+	tree.Insert(6, "xxxx")
 
 	InorderTraversal(tree, func(k int, v string) {
 		fmt.Println(k, ":", v)
