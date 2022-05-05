@@ -49,3 +49,23 @@ func TestGetDefault(t *testing.T) {
 	t.Log(tree.GetDefault(5, "default"))
 	t.Log(tree.GetDefault(7, "default"))
 }
+
+func TestLevelOrderTraversal(t *testing.T) {
+	tree := New[int, string]()
+
+	tree.LevelOrderTraversal(func(k int, v string) {
+		fmt.Println(k, ":", v)
+	})
+
+	_ = tree.Insert(3, "3")
+	_ = tree.Insert(9, "9")
+	_ = tree.Insert(20, "20")
+	_ = tree.Insert(15, "15")
+	_ = tree.Insert(7, "7")
+	_ = tree.Insert(2, "2")
+	_ = tree.Insert(8, "8")
+
+	tree.LevelOrderTraversal(func(k int, v string) {
+		fmt.Println(k, ":", v)
+	})
+}

@@ -62,3 +62,12 @@ func (t *BST[K, V]) InorderTraversal(orderDirect OrderDirect, f func(key K, valu
 		t.root.InorderTraversalDesc(f)
 	}
 }
+
+// LevelOrderTraversal level order traversal
+func (t *BST[K, V]) LevelOrderTraversal(f func(key K, value V)) {
+	if t.root == nil {
+		return
+	}
+
+	t.root.LevelOrderTraversal(f)
+}
