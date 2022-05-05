@@ -13,13 +13,20 @@ func New[K constraints.Ordered, V any]() *BST[K, V] {
 }
 
 // Get value form bst
-func (t *BST[K, V]) Get(key K) V {
-	if t.root == nil {
+func (t *BST[K, V]) Get(key K) (V, error) {
+	return t.root.Get(key)
+}
+
+// GetDefault get value form bst, if key not exists, return default value.
+func (t *BST[K, V]) GetDefault(key K, defaultV V) V {
+	v, err := t.root.Get(key)
+	if err != nil {
+		if err == ErrKeyNotExists {
+			return defaultV
+		}
 		var null V
 		return null
 	}
-
-	v, _ := t.root.Get(key)
 	return v
 }
 

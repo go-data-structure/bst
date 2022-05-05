@@ -26,12 +26,26 @@ func TestInorderTraversal(t *testing.T) {
 	})
 }
 
-func TestValid(t *testing.T) {
+func TestGet(t *testing.T) {
 	var tree BST[int, string]
 	_ = tree.Insert(3, "3")
 	_ = tree.Insert(1, "1")
 	_ = tree.Insert(8, "8")
 	_ = tree.Insert(5, "5")
 	_ = tree.Insert(6, "6")
+
+	t.Log(tree.Get(5))
 	t.Log(tree.Get(7))
+}
+
+func TestGetDefault(t *testing.T) {
+	var tree BST[int, string]
+	_ = tree.Insert(3, "3")
+	_ = tree.Insert(1, "1")
+	_ = tree.Insert(8, "8")
+	_ = tree.Insert(5, "5")
+	_ = tree.Insert(6, "6")
+
+	t.Log(tree.GetDefault(5, "default"))
+	t.Log(tree.GetDefault(7, "default"))
 }
