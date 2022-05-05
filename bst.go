@@ -19,7 +19,8 @@ func (t *BST[K, V]) Get(key K) V {
 		return null
 	}
 
-	return t.root.Get(key)
+	v, _ := t.root.Get(key)
+	return v
 }
 
 // Insert insert a key-value to bst
@@ -35,7 +36,22 @@ func (t *BST[K, V]) Insert(key K, value V) error {
 func (t *BST[K, V]) Upsert(key K, value V) {
 	if t.root == nil {
 		t.root = newBSTNode[K, V](key, value)
+		return
 	}
 
 	t.root.Upsert(key, value)
+}
+
+// InorderTraversal inorder traversal
+func (t *BST[K, V]) InorderTraversal(orderDirect OrderDirect, f func(key K, value V)) {
+	if t.root == nil {
+		return
+	}
+
+	switch orderDirect {
+	case ASC:
+		t.root.InorderTraversalAsc(f)
+	case DESC:
+		t.root.InorderTraversalDesc(f)
+	}
 }

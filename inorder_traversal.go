@@ -1,17 +1,9 @@
 package bst
 
-import (
-	"golang.org/x/exp/constraints"
-)
-
-// InorderTraversal inorder traversal in asc
-func InorderTraversal[K constraints.Ordered, V any](t *Node[K, V], f func(key K, value V)) {
-	if t == nil {
-		return
-	}
-
+// InorderTraversalAsc inorder traversal in asc
+func (n *Node[K, V]) InorderTraversalAsc(f func(key K, value V)) {
 	stacks := make([]*Node[K, V], 0)
-	var cur = t
+	var cur = n
 	var hasNext = true
 
 	for hasNext {
@@ -33,13 +25,9 @@ func InorderTraversal[K constraints.Ordered, V any](t *Node[K, V], f func(key K,
 }
 
 // InorderTraversalDesc inorder traversal in desc
-func InorderTraversalDesc[K constraints.Ordered, V any](t *Node[K, V], f func(key K, value V)) {
-	if t == nil {
-		return
-	}
-
+func (n *Node[K, V]) InorderTraversalDesc(f func(key K, value V)) {
 	stacks := make([]*Node[K, V], 0)
-	var cur = t
+	var cur = n
 	var hasNext = true
 
 	for hasNext {

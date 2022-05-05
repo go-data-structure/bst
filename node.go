@@ -18,15 +18,21 @@ func newBSTNode[K constraints.Ordered, V any](key K, value V) *Node[K, V] {
 }
 
 // Get value form bst
-func (n *Node[K, V]) Get(key K) V {
+func (n *Node[K, V]) Get(key K) (V, error) {
 	var cur = n
 	for {
-		if *cur.Key == key {
-			return *cur.Val
-		} else if *cur.Key > key {
-			cur = cur.Right
-		} else if *cur.Key < key {
+		if cur == nil {
+			var null V
+			return null, ErrKeyNotExists
+		}
+
+		switch {
+		case key == *cur.Key:
+			return *cur.Val, nil
+		case key < *cur.Key:
 			cur = cur.Left
+		case key > *cur.Key:
+			cur = cur.Right
 		}
 	}
 }
